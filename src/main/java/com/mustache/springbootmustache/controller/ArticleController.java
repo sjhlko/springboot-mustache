@@ -35,7 +35,7 @@ public class ArticleController {
     }
 
     @GetMapping(value = "")
-    public String index() {
+    public String list() {
         return "redirect:/articles/list";
     }
 
