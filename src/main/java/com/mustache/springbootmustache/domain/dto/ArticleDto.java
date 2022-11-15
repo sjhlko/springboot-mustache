@@ -1,6 +1,7 @@
 package com.mustache.springbootmustache.domain.dto;
 
 import com.mustache.springbootmustache.domain.entity.Article;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -18,6 +19,6 @@ public class ArticleDto {
     }
 
     public Article toEntity() {
-        return new Article(title, content);
+        return new Article(id, title, content);
     }
 }

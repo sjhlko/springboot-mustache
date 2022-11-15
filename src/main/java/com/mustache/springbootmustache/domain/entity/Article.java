@@ -1,5 +1,6 @@
 package com.mustache.springbootmustache.domain.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 @Entity
 @NoArgsConstructor
 @Getter
+@AllArgsConstructor
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //primary key인 id를 직접 생성하지 않고 자동으로 하는 경우
