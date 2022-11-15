@@ -17,12 +17,36 @@ class HospitalRepositoryTest {
     @Autowired
     HospitalRepository hospitalRepository;
 
+    void print(List<Hospital> hospitals){
+        for (Hospital hospital : hospitals) {
+            System.out.printf("%s %s\n",hospital.getHospitalName(),hospital.getRoadNameAddress());
+
+        }
+    }
+
     @Test
     void findById(){
         Optional<Hospital> hospital = hospitalRepository.findById(1);
         Hospital hp = hospital.get();
         System.out.println(hp.getId());
         assertEquals(1,hp.getId());
+    }
+
+    @Test
+    void containing(){
+        List<Hospital> hospitals = hospitalRepository.findByRoadNameAddressContaining("송파구");
+        this.print(hospitals);
+    }
+
+    @Test
+    void startsWith(){
+        List<Hospital> hospitals = hospitalRepository.findByHospitalNameStartsWith("강남");
+        this.print(hospitals);
+    }
+    @Test
+    void endsWith(){
+        List<Hospital> hospitals = hospitalRepository.findByHospitalNameEndingWith("의원");
+        this.print(hospitals);
     }
 
     @Test
