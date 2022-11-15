@@ -24,7 +24,10 @@ public class Hospital {
     //규칙 카멜-스네이크_ 기본값인 경우 name = "" 필요없음
     @Column(name = "hospital_name")
     private String hospitalName;
-
+    private Integer patientRoomCount;
+    private Integer totalNumberOfBeds;
+    private String businessTypeName;
+    private Float totalAreaSize;
     private String roadNameAddress;
 
 
