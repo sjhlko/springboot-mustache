@@ -1,0 +1,9 @@
+Edit 페이지
+{{#article}}
+    <form action="/articles/{{id}}" method="put">
+        <input type="text" name="title"  value="{{title}}"/>
+        <textarea rows = "3" name = "contents">{{contents}}</textarea>
+    </form>
+    <a href="/articles/{{id}}"> 1개 조회 페이지</a>
+    <a href="/articles/list"> 리스트페이지</a>
+{{/article}}

@@ -17,7 +17,7 @@ public class ArticleDto {
         this.content = content;
     }
 
-    public Article toEntity(){
-        return new Article(title,content);
+    public Article toEntity() {
+        return new Article(title, content);
     }
 }

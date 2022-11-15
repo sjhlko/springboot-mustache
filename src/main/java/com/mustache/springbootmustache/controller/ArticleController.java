@@ -29,29 +29,42 @@ public class ArticleController {
     public String newArticleForm() {
         return "articles/new";
     }
+
     @GetMapping(value = "/list")
     public String list(Model model) {
         List<Article> articles = articleRepository.findAll();
-        model.addAttribute("articles",articles);
+        model.addAttribute("articles", articles);
         return "layouts/list";
     }
+
     @GetMapping(value = "")
     public String index() {
         return "redirect:/articles/list";
     }
+
+    @GetMapping(value = "/{id}/edit")
+    public String edit(@PathVariable Long id, Model model){
+        Optional<Article> optionalArticle = articleRepository.findById(id);
+        if (!optionalArticle.isEmpty()) {
+            model.addAttribute("article", optionalArticle.get());
+            return "layouts/edit";
+        } else {
+            return "layouts/error";
+        }
+    }
     @GetMapping(value = "/{id}")
     public String selectSingle(@PathVariable Long id, Model model) {
         Optional<Article> optArticle = articleRepository.findById(id);
-        if(!optArticle.isEmpty()) {
+        if (!optArticle.isEmpty()) {
             model.addAttribute("article", optArticle.get());
             return "layouts/show";
-        }else{
+        } else {
             return "layouts/error";
         }
     }
 
     @PostMapping("/posts")
-    public String createArticle(ArticleDto articleDto){
+    public String createArticle(ArticleDto articleDto) {
         log.info(articleDto.getTitle());
         Article savedArticle = articleRepository.save(articleDto.toEntity());
         log.info("generatedId:{}", savedArticle.getId());
