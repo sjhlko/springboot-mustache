@@ -14,6 +14,8 @@ public interface HospitalRepository extends JpaRepository<Hospital,Integer> {
     List<Hospital> findByPatientRoomCountGreaterThanAndPatientRoomCountLessThan(int var1, int var2);
     List<Hospital> findByPatientRoomCountBetween(int var1, int var2);
 
+    List<Hospital> findByPatientRoomCountBetweenOrderByPatientRoomCountDesc(int var1, int var2);
+
 
 
 
