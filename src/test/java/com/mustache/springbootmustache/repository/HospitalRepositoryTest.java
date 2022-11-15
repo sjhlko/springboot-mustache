@@ -45,7 +45,7 @@ class HospitalRepositoryTest {
     }
     @Test
     void endsWith(){
-        List<Hospital> hospitals = hospitalRepository.findByHospitalNameEndingWith("의원");
+        List<Hospital> hospitals = hospitalRepository.findByHospitalNameEndingWith("한방병원");
         this.print(hospitals);
     }
 
@@ -61,5 +61,17 @@ class HospitalRepositoryTest {
             System.out.println(hospital.getHospitalName());
 
         }
+    }
+
+    @Test
+    void findByPatientRoomCountGreaterThanAndPatientRoomCountLessThan() {
+        List<Hospital> hospitals = hospitalRepository.findByPatientRoomCountGreaterThanAndPatientRoomCountLessThan(10,20);
+        print(hospitals);
+    }
+
+    @Test
+    void findByPatientRoomCountBetween() {
+        List<Hospital> hospitals = hospitalRepository.findByPatientRoomCountBetween(10,20);
+        print(hospitals);
     }
 }
