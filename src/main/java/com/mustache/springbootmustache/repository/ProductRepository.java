@@ -1,0 +1,11 @@
+package com.mustache.springbootmustache.repository;
+
+import com.mustache.springbootmustache.domain.entity.Hospital;
+import com.mustache.springbootmustache.domain.entity.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface ProductRepository extends JpaRepository <Product, Long> {
+
+}
