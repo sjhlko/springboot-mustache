@@ -19,10 +19,20 @@ public class HospitalController {
         this.hospitalRepository=hospitalRepository;
     }
 
+//    @GetMapping("")
+//    public String list(Pageable pageable, Model model){
+//        Page<Hospital> hospitals = hospitalRepository.findAll(pageable);
+//        model.addAttribute("hospitals", hospitals);
+//        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+//        model.addAttribute("next", pageable.next().getPageNumber());
+//        return "hospitals/list";
+//    }
+
     @GetMapping("")
     public String list(Pageable pageable, Model model){
-        Page<Hospital> hospitals = hospitalRepository.findAll(pageable);
-        model.addAttribute("hospitals", hospitals);
+        String keyword = "서울특별시 송파구"; //키워드를 하드코딩하여 테스트함
+        Page<Hospital> hospitals = hospitalRepository.findByRoadNameAddressContaining(keyword,pageable);
+        model.addAttribute("hospitals",hospitals);
         model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
         model.addAttribute("next", pageable.next().getPageNumber());
         return "hospitals/list";

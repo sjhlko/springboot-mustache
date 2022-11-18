@@ -1,6 +1,8 @@
 package com.mustache.springbootmustache.repository;
 
 import com.mustache.springbootmustache.domain.entity.Hospital;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -15,6 +17,10 @@ public interface HospitalRepository extends JpaRepository<Hospital,Integer> {
     List<Hospital> findByPatientRoomCountBetween(int var1, int var2);
 
     List<Hospital> findByPatientRoomCountBetweenOrderByPatientRoomCountDesc(int var1, int var2);
+
+    //페이징해서 검색 가능
+    Page<Hospital> findByRoadNameAddressContaining(String keyword, Pageable pageable);
+
 
 
 
